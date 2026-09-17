@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="description" content="Fit Connect - PT by Fitbox Personal Trainer GYM" />
-
   <title>Fit Connect - PT</title>
 
   <style>
@@ -20,16 +19,8 @@
       --accent: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html,
-    body {
-      min-height: 100%;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
 
     body {
       min-height: 100vh;
@@ -40,8 +31,7 @@
       overflow-x: hidden;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 50% -10%, #2a2a2a 0%, #141414 27%, #090909 58%, var(--bg) 100%);
+      background: radial-gradient(circle at 50% -10%, #2a2a2a 0%, #141414 27%, #090909 58%, var(--bg) 100%);
     }
 
     body::before {
@@ -50,8 +40,7 @@
       inset: 0;
       pointer-events: none;
       opacity: 0.34;
-      background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
       background-size: 36px 36px;
       mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 82%);
     }
@@ -73,9 +62,7 @@
       background: var(--card);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      box-shadow:
-        0 28px 80px rgba(0, 0, 0, 0.52),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
     .card::before {
@@ -102,9 +89,7 @@
       border-radius: 23px;
       color: #0b0b0b;
       background: linear-gradient(145deg, #ffffff 0%, #d7d7d7 55%, #a9a9a9 100%);
-      box-shadow:
-        0 14px 36px rgba(0, 0, 0, 0.38),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.9);
       font-size: 27px;
       font-weight: 850;
       letter-spacing: -1.5px;
@@ -151,9 +136,7 @@
       animation: spin 0.82s linear infinite;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .redirect-title {
       margin-bottom: 7px;
@@ -199,9 +182,7 @@
       border-color: rgba(255, 255, 255, 0.2);
     }
 
-    .store-button:active {
-      transform: translateY(0);
-    }
+    .store-button:active { transform: translateY(0); }
 
     footer {
       margin-top: 20px;
@@ -210,30 +191,14 @@
     }
 
     @media (max-width: 480px) {
-      body {
-        padding: 18px;
-      }
-
-      .card {
-        padding: 36px 21px 28px;
-        border-radius: 22px;
-      }
-
-      .icon {
-        width: 74px;
-        height: 74px;
-        border-radius: 21px;
-      }
+      body { padding: 18px; }
+      .card { padding: 36px 21px 28px; border-radius: 22px; }
+      .icon { width: 74px; height: 74px; border-radius: 21px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .spinner {
-        animation-duration: 1.7s;
-      }
-
-      .store-button {
-        transition: none;
-      }
+      .spinner { animation-duration: 1.7s; }
+      .store-button { transition: none; }
     }
   </style>
 </head>
@@ -242,7 +207,6 @@
   <main class="page">
     <section class="card">
       <div class="icon" aria-hidden="true">FC</div>
-
       <div class="company">Fitbox Personal Trainer GYM</div>
       <h1>Fit Connect - PT</h1>
 
@@ -257,21 +221,8 @@
       </div>
 
       <div class="store-buttons" id="storeButtons">
-        <a
-          class="store-button"
-          href="https://apps.apple.com/app/id6806308350"
-          rel="noopener"
-        >
-          App Store'da Aç
-        </a>
-
-        <a
-          class="store-button"
-          href="https://play.google.com/store/apps/details?id=com.fitboxpt.fitconnect"
-          rel="noopener"
-        >
-          Google Play'de Aç
-        </a>
+        <a class="store-button" href="https://apps.apple.com/app/id6806308350" rel="noopener">App Store'da Aç</a>
+        <a class="store-button" href="https://play.google.com/store/apps/details?id=com.fitboxpt.fitconnect" rel="noopener">Google Play'de Aç</a>
       </div>
     </section>
 
@@ -283,6 +234,15 @@
       const IOS_URL = "https://apps.apple.com/app/id6806308350";
       const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.fitboxpt.fitconnect";
 
+      // Example: https://cemcois1.github.io/fit-connect-download/?id=123
+      // The ID is available for future referral / gym / trainer tracking.
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (id && /^\d+$/.test(id)) {
+        document.documentElement.dataset.referralId = id;
+      }
+
       const redirectArea = document.getElementById("redirectArea");
       const redirectSubtitle = document.getElementById("redirectSubtitle");
       const storeButtons = document.getElementById("storeButtons");
@@ -290,15 +250,9 @@
       function getDevice() {
         const ua = navigator.userAgent || navigator.vendor || window.opera || "";
 
-        if (/android/i.test(ua)) {
-          return "android";
-        }
+        if (/android/i.test(ua)) return "android";
+        if (/iPad|iPhone|iPod/.test(ua)) return "ios";
 
-        if (/iPad|iPhone|iPod/.test(ua)) {
-          return "ios";
-        }
-
-        // Newer iPads can identify themselves as macOS devices.
         if (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) {
           return "ios";
         }
