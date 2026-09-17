@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="Fit Connect - PT by Fitbox Personal Trainer GYM" />
+
+  <title>Fit Connect - PT</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070707;
+      --card: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.10);
+      --text: #f5f5f5;
+      --muted: #9b9b9b;
+      --muted-2: #696969;
+      --accent: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, #2a2a2a 0%, #141414 27%, #090909 58%, var(--bg) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.34;
+      background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 82%);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 42px 28px 32px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.52),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -90px;
+      left: 50%;
+      width: 220px;
+      height: 180px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.10);
+      filter: blur(65px);
+      pointer-events: none;
+    }
+
+    .icon {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 23px;
+      color: #0b0b0b;
+      background: linear-gradient(145deg, #ffffff 0%, #d7d7d7 55%, #a9a9a9 100%);
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      font-size: 27px;
+      font-weight: 850;
+      letter-spacing: -1.5px;
+    }
+
+    .company {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-bottom: 13px;
+      font-size: clamp(28px, 8vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+      font-weight: 780;
+    }
+
+    .description {
+      max-width: 340px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+
+    .redirect-area {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.075);
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 17px;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.82s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .redirect-title {
+      margin-bottom: 7px;
+      color: #eeeeee;
+      font-size: 15px;
+      font-weight: 650;
+    }
+
+    .redirect-subtitle {
+      min-height: 18px;
+      color: var(--muted-2);
+      font-size: 12.5px;
+    }
+
+    .store-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 11px;
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.075);
+    }
+
+    .store-button {
+      width: 100%;
+      padding: 15px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 14px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.075);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .store-button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .store-button:active {
+      transform: translateY(0);
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #505050;
+      font-size: 11px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 18px;
+      }
+
+      .card {
+        padding: 36px 21px 28px;
+        border-radius: 22px;
+      }
+
+      .icon {
+        width: 74px;
+        height: 74px;
+        border-radius: 21px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner {
+        animation-duration: 1.7s;
+      }
+
+      .store-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="icon" aria-hidden="true">FC</div>
+
+      <div class="company">Fitbox Personal Trainer GYM</div>
+      <h1>Fit Connect - PT</h1>
+
+      <p class="description">
+        Fit Connect uygulamasına erişmek için cihazınıza uygun uygulama mağazasına yönlendiriliyorsunuz.
+      </p>
+
+      <div class="redirect-area" id="redirectArea" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="redirect-title">Yönlendiriliyorsunuz...</div>
+        <div class="redirect-subtitle" id="redirectSubtitle">Cihazınız kontrol ediliyor</div>
+      </div>
+
+      <div class="store-buttons" id="storeButtons">
+        <a
+          class="store-button"
+          href="https://apps.apple.com/app/id6806308350"
+          rel="noopener"
+        >
+          App Store'da Aç
+        </a>
+
+        <a
+          class="store-button"
+          href="https://play.google.com/store/apps/details?id=com.fitboxpt.fitconnect"
+          rel="noopener"
+        >
+          Google Play'de Aç
+        </a>
+      </div>
+    </section>
+
+    <footer>© Fitbox Personal Trainer GYM</footer>
+  </main>
+
+  <script>
+    (() => {
+      const IOS_URL = "https://apps.apple.com/app/id6806308350";
+      const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.fitboxpt.fitconnect";
+
+      const redirectArea = document.getElementById("redirectArea");
+      const redirectSubtitle = document.getElementById("redirectSubtitle");
+      const storeButtons = document.getElementById("storeButtons");
+
+      function getDevice() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera || "";
+
+        if (/android/i.test(ua)) {
+          return "android";
+        }
+
+        if (/iPad|iPhone|iPod/.test(ua)) {
+          return "ios";
+        }
+
+        // Newer iPads can identify themselves as macOS devices.
+        if (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) {
+          return "ios";
+        }
+
+        return "desktop";
+      }
+
+      const device = getDevice();
+
+      if (device === "ios") {
+        redirectSubtitle.textContent = "App Store açılıyor...";
+        setTimeout(() => window.location.replace(IOS_URL), 900);
+        return;
+      }
+
+      if (device === "android") {
+        redirectSubtitle.textContent = "Google Play açılıyor...";
+        setTimeout(() => window.location.replace(ANDROID_URL), 900);
+        return;
+      }
+
+      redirectArea.style.display = "none";
+      storeButtons.style.display = "flex";
+    })();
+  </script>
+</body>
+</html>
